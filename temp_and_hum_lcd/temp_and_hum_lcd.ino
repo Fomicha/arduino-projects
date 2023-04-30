@@ -28,8 +28,9 @@ void loop() {
     lcd.println(err);
     delay(1000);
     return;
-  } // LCD output
-
+  } 
+  
+  // LCD output
   lcd.setCursor(0,0); // Set the first row (location at which subsequent text written to the LCD will be displayed) 
   lcd.print("T:"); // Print "T:" on the LCD
   lcd.print((int)temperature); // Print string temperature
