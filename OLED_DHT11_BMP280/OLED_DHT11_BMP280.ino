@@ -4,11 +4,6 @@
 #include <Adafruit_BMP280.h>
 #include <DHT.h>
 
-#define BMP_SCK 13
-#define BMP_MISO 12
-#define BMP_MOSI 11 
-#define BMP_CS 10
-
 #define DHTPIN 2
 #define DHTTYPE DHT11
 
@@ -46,7 +41,7 @@ void setup() {
 void loop() {
   float temperature = bmp.readTemperature();
   float pressure = bmp.readPressure() * 0.007500615613026;
-  float A = bmp.readAltitude(1010);
+  float altitude = bmp.readAltitude(1010);
 
   int hd = dht.readHumidity();
   int td = dht.readTemperature();
@@ -58,7 +53,7 @@ void loop() {
   Serial.print(pressure);
   Serial.print(" hPa\n");
   Serial.print("Altitude: ");
-  Serial.print(A);
+  Serial.print(altitude);
   Serial.print(" hPa\n");
 
   display.clearDisplay();
@@ -80,7 +75,7 @@ void loop() {
   display.setCursor(0, 30);
   display.print("Alt:");
   display.setCursor(40, 30);
-  display.print(A);
+  display.print(altitude);
 
   display.setCursor(0, 40);
   display.print("Temp:");
